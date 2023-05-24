@@ -44,8 +44,18 @@ function betweenExtremes(numbers) {
   if(!numbers.every(a => typeof(a) == "number")){
     return numbers;
   }
+  
+  numbers = numbers.sort((a,b) => a - b);
 
-  return Math.max(...numbers) - Math.min(...numbers);
+  let maxNum = numbers[numbers.length - 1];
+  let minNum = numbers[0];
+
+  return maxNum - minNum;
+  
+  /**
+   * is this one faster than .sort?
+   * return Math.max(...numbers) - Math.min(...numbers);
+  */
 }
 
 /**
