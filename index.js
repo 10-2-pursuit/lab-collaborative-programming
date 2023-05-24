@@ -23,8 +23,8 @@ function textScroller(word) {
   }
   let stringTemp = word.split('');
   for (let i = 0; i < word.length - 1; i++){
-    let temp = stringTemp.shift();
-    stringTemp.push(temp)
+    let tempStr = stringTemp.shift();
+    stringTemp.push(tempStr)
     result.push(stringTemp.join(''));
   }
   result.push(word);
@@ -45,12 +45,7 @@ function betweenExtremes(numbers) {
     return numbers;
   }
 
-  numbers = numbers.sort((a,b) => a - b);
-
-  let maxNum = numbers[numbers.length - 1];
-  let minNum = numbers[0];
-  
-  return maxNum - minNum;
+  return Math.max(...numbers) - Math.min(...numbers);
 }
 
 /**
@@ -61,7 +56,17 @@ function betweenExtremes(numbers) {
  * Example: "A new month"
  * .- / -. . .-- / -- --- -. - ....
  */
-function morseCodeTranslator() {}
+function morseCodeTranslator(message, dictionary) {
+  let translated = [];
+
+  message = message.split(' ').join('').split('');
+
+  for(let char of message){
+    translated.push(dictionary[char.toUpperCase()]);
+  }
+
+  return translated.join(' ');
+}
 
 module.exports = {
   sortByStringLength,
