@@ -30,7 +30,9 @@ function textScroller(word) {
  * @param {Number[]} numbers - An array of numbers.
  * @returns {Number} The difference between the largest and smallest number.
  */
-function betweenExtremes() {}
+function betweenExtremes(numbers) {
+  return isNaN(Math.max(...numbers) - Math.min(...numbers)) ? numbers : Math.max(...numbers) - Math.min(...numbers);
+}
 
 /**
  * Returns the difference between the largest and smallest number in the array
@@ -40,7 +42,9 @@ function betweenExtremes() {}
  * Example: "A new month"
  * .- / -. . .-- / -- --- -. - ....
  */
-function morseCodeTranslator() {}
+function morseCodeTranslator(message, dictionary) {
+  return message.replace(" ", "").split("").map(mess => dictionary[mess.toUpperCase()] || "").join(" ");
+}
 
 module.exports = {
   sortByStringLength,
