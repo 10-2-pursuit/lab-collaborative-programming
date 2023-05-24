@@ -47,10 +47,7 @@ function betweenExtremes(numbers) {
   
   numbers = numbers.sort((a,b) => a - b);
 
-  let maxNum = numbers[numbers.length - 1];
-  let minNum = numbers[0];
-
-  return maxNum - minNum;
+  return numbers[numbers.length - 1] - numbers[0];
   
   /**
    * is this one faster than .sort?
@@ -70,7 +67,7 @@ function morseCodeTranslator(message, dictionary) {
   let translated = [];
 
   message = message.split(' ').join('').split('');
-
+  
   for(let char of message){
     translated.push(dictionary[char.toUpperCase()]);
   }
