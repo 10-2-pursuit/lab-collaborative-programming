@@ -25,8 +25,8 @@ function sortByStringLength(input) {
 function textScroller(word) {
   let newArr = []
   let length = word.length
-  for (let letter = 1; letter < length; letter++){
-    newArr.push(word.slice(length-letter,length) + word.slice(0,length-letter))
+  for (let letter = 0; letter < length; letter++){
+    newArr.unshift(word.slice(length-letter,length) + word.slice(0,length-letter))
   }
   return newArr
 }
@@ -37,7 +37,8 @@ function textScroller(word) {
  * @returns {Number} The difference between the largest and smallest number.
  */
 function betweenExtremes(numbers) {
-  return Math.max(...numbers) - Math.min(...numbers)
+  sum = Math.max(...numbers) - Math.min(...numbers) 
+  return typeof sum == "number" ? sum : numbers 
 }
 
 /**
@@ -48,7 +49,9 @@ function betweenExtremes(numbers) {
  * Example: "A new month"
  * .- / -. . .-- / -- --- -. - ....
  */
-function morseCodeTranslator() {}
+function morseCodeTranslator(message, dictionary) {
+    return message.replace(' ','').split('').map(x => dictionary[x.toUpperCase()] || '').join(' ')
+}
 
 module.exports = {
   sortByStringLength,
