@@ -6,17 +6,17 @@ const morseCodeDictionary = require("./morse-code-dictionary.json");
  * @returns {string[]} An array of strings.
  */
 function sortByStringLength(String) {
-let sortedArray = String.sort((str1, str2) => {
-  if (str1.length > str2.length) {
-    return 1
-  }
+  let sortedArray = String.sort((str1, str2) => {
+    if (str1.length > str2.length) {
+      return 1
+    }
 
-  if (str1.length < str2.length) {
-    return -1;
-  }
+    if (str1.length < str2.length) {
+      return -1;
+    }
 
-  return 0
-});
+    return 0
+  });
   console.log(sortedArray)
   return sortedArray
 }
@@ -30,9 +30,15 @@ let sortedArray = String.sort((str1, str2) => {
  * [ 'elloH', 'lloHe', 'loHel', 'oHell', 'Hello' ]
  */
 function textScroller(word) {
+  let newArrayOfStrings = [];
+  for (let i = 0; i < word.length; i++) {
+    newArrayOfStrings.unshift(word.slice(word.length - i) + word.slice(0, word.length - i));
+  }
+  return newArrayOfStrings;
+}
   
 
-}
+
 
 /**
  * Returns the difference between the largest and smallest number in the array
@@ -40,6 +46,7 @@ function textScroller(word) {
  * @returns {Number} The difference between the largest and smallest number.
  */
 function betweenExtremes() {
+  
 
 }
 
