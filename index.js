@@ -23,8 +23,8 @@ function textScroller(word) {
   }
   let stringTemp = word.split('');
   for (let i = 0; i < word.length - 1; i++){
-    let tempStr = stringTemp.shift();
-    stringTemp.push(tempStr)
+    let tempChar = stringTemp.shift();
+    stringTemp.push(tempChar)
     result.push(stringTemp.join(''));
   }
   result.push(word);
@@ -66,7 +66,7 @@ function betweenExtremes(numbers) {
 function morseCodeTranslator(message, dictionary) {
   let translated = [];
 
-  message = message.split(' ').join('').split('');
+  message = message.split(' ').join('');
   
   for(let char of message){
     translated.push(dictionary[char.toUpperCase()]);
