@@ -73,10 +73,17 @@ function betweenExtremes(numbers) {
  * Example: "A new month"
  * .- / -. . .-- / -- --- -. - ....
  */
-function morseCodeTranslator() {
+function morseCodeTranslator(message, dictionary) {
+  let morseCodeMessage = [];
+  message = message.replaceAll(" " , "");
+  for (morse of message){
+    morseCodeMessage.push(dictionary[morse.toUpperCase()])
+  }
   
-
+  return morseCodeMessage.join(" ")
 }
+
+
 
 module.exports = {
   sortByStringLength,
