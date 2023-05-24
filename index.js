@@ -30,10 +30,12 @@ function sortByStringLength(String) {
  * [ 'elloH', 'lloHe', 'loHel', 'oHell', 'Hello' ]
  */
 function textScroller(word) {
+  console.log(word)
   let newArrayOfStrings = [];
   for (let i = 0; i < word.length; i++) {
     newArrayOfStrings.unshift(word.slice(word.length - i) + word.slice(0, word.length - i));
   }
+  console.log(newArrayOfStrings)
   return newArrayOfStrings;
 }
   
@@ -46,7 +48,7 @@ function textScroller(word) {
  * @returns {Number} The difference between the largest and smallest number.
  */
 function betweenExtremes(numbers) {
-  if(numbers.length == 0){
+  if(numbers.length == 0) {
     return [];
   }
 
