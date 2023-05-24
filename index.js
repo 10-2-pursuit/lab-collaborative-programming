@@ -38,7 +38,7 @@ function textScroller(word) {
  */
 function betweenExtremes(numbers) {
   sum = Math.max(...numbers) - Math.min(...numbers) 
-  return typeof sum == "number" ? sum : numbers 
+  return isNaN(sum) ? numbers : sum
 }
 
 /**
