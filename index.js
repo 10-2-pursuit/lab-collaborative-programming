@@ -45,10 +45,25 @@ function textScroller(word) {
  * @param {Number[]} numbers - An array of numbers.
  * @returns {Number} The difference between the largest and smallest number.
  */
-function betweenExtremes() {
-  
+function betweenExtremes(numbers) {
+  if(numbers.length == 0){
+    return [];
+  }
 
+  if(!numbers.every(number => typeof(number) == "number")){
+    return numbers;
+  }
+
+  numbers = numbers.sort((a,b) => a - b);
+
+  let largestNumber = numbers[numbers.length - 1];
+  let smallestNumber = numbers[0];
+
+  return largestNumber - smallestNumber;
 }
+
+
+
 
 /**
  * Returns the difference between the largest and smallest number in the array
@@ -59,6 +74,7 @@ function betweenExtremes() {
  * .- / -. . .-- / -- --- -. - ....
  */
 function morseCodeTranslator() {
+  
 
 }
 
