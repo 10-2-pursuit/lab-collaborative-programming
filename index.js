@@ -7,7 +7,7 @@ const morseCodeDictionary = require("./morse-code-dictionary.json");
  */
 function sortByStringLength(stringArray) {
   
-  return stringArray.sort((a, b)=> a.length - b.length);
+  return stringArray.sort((bigWord, smallWord) => bigWord.length - smallWord.length);
 }
 
 /**
@@ -17,19 +17,13 @@ function sortByStringLength(stringArray) {
  * Example: "Hello"
  * [ 'elloH', 'lloHe', 'loHel', 'oHell', 'Hello' ]
  */
-function textScroller(string) {
-  let scrollStr = [];
-  let tempString;
-
-  for (let i = 0; i < string.length; i++) {
-    tempString = '';
-
-    for (let j = 1; j <= string.length; j++) {
-      tempString += string[(i + j) % string.length];//% keep from adding extra chars
-    }
-    scrollStr.push(tempString);
+function textScroller(word) {
+  let finalStringArray = [];
+  
+  for (let i = 0; i < word.length; i++) {
+    finalStringArray.unshift(word.slice(word.length - i) + word.slice(0, word.length - i));
   }
-  return scrollStr;
+  return finalStringArray;
 }
 
 /**
@@ -39,15 +33,7 @@ function textScroller(string) {
  */
 function betweenExtremes(numbers) {
 
-  const result = numbers.every(element => {
-    return typeof element === 'number';
-  });
-
-  if (!result) {
-    return numbers;
-  } else {
-    return Math.max(...numbers) - Math.min(...numbers);
-  }
+  return isNaN(Math.max(...numbers) - Math.min(...numbers)) ? numbers : Math.max(...numbers) - Math.min(...numbers);
 }
 
 /**
@@ -59,22 +45,8 @@ function betweenExtremes(numbers) {
  * .- / -. . .-- / -- --- -. - ....
  */
 function morseCodeTranslator(message, dictionary) {
-  message = message.replace(/ /g, "");
-  let splitMessage = message.toUpperCase().split('');
-  let codeString = '';
 
-  for(let i = 0; i <= splitMessage.length; i++) {
-    for (let letter in dictionary) {
-      if (letter == splitMessage[i]) {
-        codeString += dictionary[letter] + ' ';
-      }
-    }
-  }
-
-  codeString = codeString.trim();
-
-  console.log(codeString)
-  return codeString;
+  return message.replace(" ", "").split("").map(mess => dictionary[mess.toUpperCase()] || "").join(" ");
 }
 
 module.exports = {
