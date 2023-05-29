@@ -6,6 +6,9 @@ const morseCodeDictionary = require("./morse-code-dictionary.json");
  * @returns {string[]} An array of strings.
  */
 function sortByStringLength(strArr) {
+  if(!strArr.every(a => typeof(a) == "string")){
+    return strArr;
+  }
   return strArr.sort((a,b) => (a.length > b.length) ? 1 : (a.length < b.length) ? -1 : 0);
 }
 
